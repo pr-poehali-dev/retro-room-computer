@@ -53,72 +53,73 @@ const Index = () => {
       <div className="absolute inset-0 scanlines opacity-20" />
       
       <div className="relative z-10 min-h-screen flex items-center justify-center p-8">
-        <div className="w-full max-w-3xl">
-          <div className="relative bg-gradient-to-b from-[#1a3d1a] to-[#0d1f0d] p-1 shadow-2xl animate-glow-pulse" style={{ borderRadius: '40px' }}>
-            <div className="bg-[#001100] border-4 border-[#0f0] shadow-[0_0_40px_rgba(0,255,0,0.5)]" style={{ borderRadius: '38px' }}>
-              <div className="bg-gradient-to-b from-[#003300] to-[#001100] px-6 py-3 border-b-2 border-[#0f0]" style={{ borderTopLeftRadius: '36px', borderTopRightRadius: '36px' }}>
+        <div className="w-full max-w-2xl">
+          <div className="relative bg-gradient-to-b from-[#0a2a0a] to-[#051505] p-1 shadow-2xl" style={{ borderRadius: '40px' }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" style={{ borderRadius: '40px' }} />
+            <div className="bg-[#001100] border-2 border-[#0a4d0a] shadow-[0_0_15px_rgba(0,255,0,0.2)] relative" style={{ borderRadius: '38px' }}>
+              <div className="bg-gradient-to-b from-[#002a00] to-[#001100] px-4 py-2 border-b border-[#0a4d0a]" style={{ borderTopLeftRadius: '36px', borderTopRightRadius: '36px' }}>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full bg-[#0f0] animate-pulse" />
-                    <span className="text-[#0f0] text-xl font-bold crt-effect tracking-wider">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-[#0f0] opacity-60" />
+                    <span className="text-[#0f0] text-base font-bold crt-effect tracking-wider opacity-80">
                       RETRO TERMINAL v2.0
                     </span>
                   </div>
-                  <div className="text-[#0f0] text-sm crt-effect">
+                  <div className="text-[#0f0] text-xs crt-effect opacity-60">
                     [{new Date().toLocaleTimeString('ru-RU')}]
                   </div>
                 </div>
               </div>
 
-              <div className="p-6 space-y-6">
-                <div className="space-y-3">
-                  <Label className="text-[#0f0] text-lg crt-effect block">
+              <div className="p-4 space-y-4">
+                <div className="space-y-2">
+                  <Label className="text-[#0f0] text-sm crt-effect block opacity-80">
                     {'>'} ВВЕДИТЕ ЗАПРОС:
                   </Label>
                   <Textarea
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Начните вводить текст..."
-                    className="min-h-[120px] bg-[#001a00] border-2 border-[#0f0] text-[#0f0] text-lg placeholder:text-[#0f0]/40 crt-effect focus:ring-[#0f0] focus:border-[#0f0] resize-none font-mono"
+                    className="min-h-[80px] bg-[#001a00] border border-[#0a4d0a] text-[#0f0] text-sm placeholder:text-[#0f0]/30 crt-effect focus:ring-1 focus:ring-[#0a4d0a] focus:border-[#0a4d0a] resize-none font-mono"
                     disabled={isTyping}
                   />
                 </div>
 
-                <div className="flex items-center justify-between bg-[#002200] p-4 rounded border border-[#0f0]/30">
-                  <Label htmlFor="storyboard-mode" className="text-[#0f0] text-lg crt-effect cursor-pointer">
+                <div className="flex items-center justify-between bg-[#001a00] p-3 rounded border border-[#0a4d0a]/50">
+                  <Label htmlFor="storyboard-mode" className="text-[#0f0] text-sm crt-effect cursor-pointer opacity-80">
                     РЕЖИМ РАСКАДРОВКИ
                   </Label>
                   <Switch
                     id="storyboard-mode"
                     checked={storyboardMode}
                     onCheckedChange={setStoryboardMode}
-                    className="data-[state=checked]:bg-[#0f0]"
+                    className="data-[state=checked]:bg-[#0a4d0a]"
                   />
                 </div>
 
                 <Button
                   onClick={handleGenerate}
                   disabled={isTyping || !input.trim()}
-                  className="w-full bg-[#0f0] hover:bg-[#0f0]/80 text-[#001100] font-bold text-xl py-6 rounded border-2 border-[#0f0] shadow-[0_0_20px_rgba(0,255,0,0.5)] transition-all hover:shadow-[0_0_30px_rgba(0,255,0,0.8)] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#0a4d0a] hover:bg-[#0f0]/20 text-[#0f0] font-bold text-base py-4 rounded border border-[#0a4d0a] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isTyping ? '[ ГЕНЕРАЦИЯ... ]' : '[ ЗАПУСТИТЬ ГЕНЕРАЦИЮ ]'}
                 </Button>
 
                 {displayText && (
-                  <div className="bg-[#000800] p-6 rounded border-2 border-[#0f0] min-h-[300px] relative overflow-hidden">
-                    <div className="absolute inset-0 scanlines opacity-20" />
-                    <pre className="text-[#0f0] text-base crt-effect whitespace-pre-wrap break-words font-mono relative z-10">
+                  <div className="bg-[#000800] p-4 rounded border border-[#0a4d0a] min-h-[200px] relative overflow-hidden">
+                    <div className="absolute inset-0 scanlines opacity-10" />
+                    <pre className="text-[#0f0] text-sm crt-effect whitespace-pre-wrap break-words font-mono relative z-10 opacity-90">
                       {displayText}
                       {isTyping && showCursor && (
-                        <span className="inline-block w-2 h-5 bg-[#0f0] ml-1 animate-pulse" />
+                        <span className="inline-block w-1.5 h-4 bg-[#0f0] ml-1 opacity-80" />
                       )}
                     </pre>
                   </div>
                 )}
               </div>
 
-              <div className="bg-gradient-to-t from-[#003300] to-[#001100] px-6 py-3 border-t-2 border-[#0f0]" style={{ borderBottomLeftRadius: '36px', borderBottomRightRadius: '36px' }}>
-                <div className="flex items-center justify-between text-[#0f0] text-sm crt-effect">
+              <div className="bg-gradient-to-t from-[#002a00] to-[#001100] px-4 py-2 border-t border-[#0a4d0a]" style={{ borderBottomLeftRadius: '36px', borderBottomRightRadius: '36px' }}>
+                <div className="flex items-center justify-between text-[#0f0] text-xs crt-effect opacity-60">
                   <span>STATUS: READY</span>
                   <span>SYSTEM: ONLINE</span>
                   <span>MODE: {storyboardMode ? 'STORYBOARD' : 'STANDARD'}</span>
@@ -127,9 +128,9 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="mt-6 text-center">
-            <p className="text-[#0f0] text-sm crt-effect opacity-70">
-              RETRO GENERATOR SYSTEM © 2025 • POWERED BY VINTAGE TECHNOLOGY
+          <div className="mt-4 text-center">
+            <p className="text-[#0f0] text-xs crt-effect opacity-50">
+              RETRO GENERATOR SYSTEM © 2025
             </p>
           </div>
         </div>
