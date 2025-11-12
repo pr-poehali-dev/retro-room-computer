@@ -46,17 +46,17 @@ const Index = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: 'url(https://cdn.poehali.dev/files/3f2f229e-78b1-4d64-970d-27aa0f826355.jpg)',
-          filter: 'brightness(0.4) contrast(1.1)',
+          filter: 'brightness(0.6) contrast(1.2)',
         }}
       />
       
-      <div className="absolute inset-0 scanlines opacity-30" />
+      <div className="absolute inset-0 scanlines opacity-20" />
       
-      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
-        <div className="w-full max-w-4xl">
-          <div className="relative bg-gradient-to-b from-[#1a3d1a] to-[#0d1f0d] rounded-lg p-1 shadow-2xl animate-glow-pulse">
-            <div className="bg-[#001100] rounded-lg border-4 border-[#0f0] shadow-[0_0_40px_rgba(0,255,0,0.5)]">
-              <div className="bg-gradient-to-b from-[#003300] to-[#001100] px-6 py-3 rounded-t border-b-2 border-[#0f0]">
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-8">
+        <div className="w-full max-w-3xl">
+          <div className="relative bg-gradient-to-b from-[#1a3d1a] to-[#0d1f0d] p-1 shadow-2xl animate-glow-pulse" style={{ borderRadius: '40px' }}>
+            <div className="bg-[#001100] border-4 border-[#0f0] shadow-[0_0_40px_rgba(0,255,0,0.5)]" style={{ borderRadius: '38px' }}>
+              <div className="bg-gradient-to-b from-[#003300] to-[#001100] px-6 py-3 border-b-2 border-[#0f0]" style={{ borderTopLeftRadius: '36px', borderTopRightRadius: '36px' }}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 rounded-full bg-[#0f0] animate-pulse" />
@@ -71,18 +71,6 @@ const Index = () => {
               </div>
 
               <div className="p-6 space-y-6">
-                <div className="flex items-center justify-between bg-[#002200] p-4 rounded border border-[#0f0]/30">
-                  <Label htmlFor="storyboard-mode" className="text-[#0f0] text-lg crt-effect cursor-pointer">
-                    РЕЖИМ РАСКАДРОВКИ
-                  </Label>
-                  <Switch
-                    id="storyboard-mode"
-                    checked={storyboardMode}
-                    onCheckedChange={setStoryboardMode}
-                    className="data-[state=checked]:bg-[#0f0]"
-                  />
-                </div>
-
                 <div className="space-y-3">
                   <Label className="text-[#0f0] text-lg crt-effect block">
                     {'>'} ВВЕДИТЕ ЗАПРОС:
@@ -93,6 +81,18 @@ const Index = () => {
                     placeholder="Начните вводить текст..."
                     className="min-h-[120px] bg-[#001a00] border-2 border-[#0f0] text-[#0f0] text-lg placeholder:text-[#0f0]/40 crt-effect focus:ring-[#0f0] focus:border-[#0f0] resize-none font-mono"
                     disabled={isTyping}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between bg-[#002200] p-4 rounded border border-[#0f0]/30">
+                  <Label htmlFor="storyboard-mode" className="text-[#0f0] text-lg crt-effect cursor-pointer">
+                    РЕЖИМ РАСКАДРОВКИ
+                  </Label>
+                  <Switch
+                    id="storyboard-mode"
+                    checked={storyboardMode}
+                    onCheckedChange={setStoryboardMode}
+                    className="data-[state=checked]:bg-[#0f0]"
                   />
                 </div>
 
@@ -117,7 +117,7 @@ const Index = () => {
                 )}
               </div>
 
-              <div className="bg-gradient-to-t from-[#003300] to-[#001100] px-6 py-3 rounded-b border-t-2 border-[#0f0]">
+              <div className="bg-gradient-to-t from-[#003300] to-[#001100] px-6 py-3 border-t-2 border-[#0f0]" style={{ borderBottomLeftRadius: '36px', borderBottomRightRadius: '36px' }}>
                 <div className="flex items-center justify-between text-[#0f0] text-sm crt-effect">
                   <span>STATUS: READY</span>
                   <span>SYSTEM: ONLINE</span>
